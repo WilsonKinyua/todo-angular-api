@@ -7,13 +7,17 @@
           <form (ngSubmit)="addNewTodo()" id="add-todo" #f="ngForm">
             <div class="form-group mb-2">
               <label for="todo">Title</label>
-              <input type="text" class="form-control" id="todo" ngModel  name="title" placeholder="" required #title="ngModel">
-              <p class="text-danger error-block" *ngIf="!title.valid && title.touched"><small>Fill in the title!</small></p>
+              <input type="text" class="form-control" id="todo" ngModel name="title" placeholder="" required
+                #title="ngModel">
+              <p class="text-danger error-block" *ngIf="!title.valid && title.touched"><small>Fill in the title!</small>
+              </p>
             </div>
             <div class="mb-2">
               <label for="description">Description</label>
-              <textarea name="description" id="description" cols="30" rows="5" class="form-control" ngModel required #description="ngModel"></textarea>
-              <p class="text-danger error-block" *ngIf="!description.valid && description.touched"><small>Fill in field!</small></p>
+              <textarea name="text" id="text" cols="30" rows="5" class="form-control" ngModel required
+                #text="ngModel"></textarea>
+              <p class="text-danger error-block" *ngIf="!text.valid && text.touched"><small>Fill in
+                  field!</small></p>
             </div>
             <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Add Todo</button>
           </form>
@@ -23,23 +27,25 @@
     <div class="col-md-6">
       <div class="card">
         <div class="card-body">
-          <table class="table table-hover">
+          <table class="table table-hover table-responsive">
             <thead>
-              <tr>
+              <tr class="text-capitalize">
                 <th scope="col">#</th>
                 <th scope="col">Title</th>
-                <th scope="col">DESCRIPTION</th>
-                <th scope="col">CREATED AT</th>
+                <th scope="col">Description</th>
+                <th scope="col">date</th>
                 <th scope="col"></th>
                 <th scope="col"></th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
+              <tr *ngFor="let todo of allTodos;">
+                <th scope="row">
+                  <span class="">{{todo.id}}</span>
+                </th>
+                <td>{{ todo.title }}</td>
+                <td>{{ todo.text }}</td>
+                <td>16 April 2020</td>
                 <td>
                   <button class="btn btn-success">Completed</button>
                 </td>
