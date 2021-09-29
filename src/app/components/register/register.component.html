@@ -1,11 +1,16 @@
 <section class="login-dark">
-  <form method="post">
+  <!-- <form method="post" > -->
+    <form (ngSubmit)="addNewUser()" id="add-todo" #f="ngForm">
     <h2 class="visually-hidden">Login Form</h2>
     <div class="illustration"><i class="icon ion-ios-key-outline"></i></div>
-    <div class="mb-3"><input class="form-control" type="name" name="name" placeholder="Name"></div>
-    <div class="mb-3"><input class="form-control" type="email" name="email" placeholder="Email"></div>
-    <div class="mb-3"><input class="form-control" type="password" name="password" placeholder="Password"></div>
-    <div class="mb-3"><button class="btn btn-primary d-block w-100" type="submit">Log In</button></div><a class="forgot"
+    <div class="mb-3">
+      <input class="form-control" type="name" name="name" placeholder="Name" required ngModel #name="ngModel">
+      <p class="text-danger error-block" *ngIf="!name.valid && name.touched"><small>Fill in the title!</small>
+      </p>
+    </div>
+    <div class="mb-3"><input class="form-control" type="email" name="email" placeholder="Email" ngModel required #email="ngModel"></div>
+    <div class="mb-3"><input class="form-control" type="password" name="password" placeholder="Password" ngModel #password="ngModel" required></div>
+    <div class="mb-3"><button class="btn btn-primary d-block w-100" type="submit" [disabled]="!f.valid">Register</button></div><a class="forgot"
       routerLink='/login'>Have an account? Login</a>
   </form>
 </section>
