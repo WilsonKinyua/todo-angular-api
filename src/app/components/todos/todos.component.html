@@ -1,6 +1,6 @@
 <div class="">
   <div class="row m-5">
-    <div class="col-md-6">
+    <div class="col-md-4 mb-2">
       <div class="card">
         <div class="card-body">
           <!-- create a todo form -->
@@ -24,7 +24,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-8">
       <div class="card">
         <div class="card-body">
           <table class="table table-hover table-responsive">
@@ -47,10 +47,12 @@
                 <td>{{ todo.text }}</td>
                 <td>16 April 2020</td>
                 <td>
-                  <button class="btn btn-success">Completed</button>
+                  <button class="btn btn-success" (click)="setCompleted(todo)" *ngIf="!todo.complete">Not
+                    Completed</button>
+                  <button class="btn btn-success" disabled *ngIf="todo.complete">Completed</button>
                 </td>
                 <td>
-                  <button class="btn btn-danger">Delete</button>
+                  <button class="btn btn-danger" (click)="deleteTodo(todo.id)">Delete</button>
                 </td>
               </tr>
             </tbody>

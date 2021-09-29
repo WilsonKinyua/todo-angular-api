@@ -22,4 +22,14 @@ export class TodosService {
   addTodo(todo: Todo) {
     return this.http.post(this.sourceUrl + '/bucketlist', todo);
   }
+
+  // update todo
+  updateTodo(todo: Todo) {
+    return this.http.put(this.sourceUrl + '/bucketlist/' + todo.id, todo);
+  }
+
+  // delete a todo
+  deleteTodo(id: string) {
+    return this.http.delete(this.sourceUrl + '/bucketlist/' + id);
+  }
 }
