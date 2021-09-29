@@ -23,7 +23,7 @@ export class TodosService {
     return this.http.post(this.sourceUrl + '/bucketlist', todo);
   }
 
-  // update todo
+  // update todo and mark completed
   updateTodo(todo: Todo) {
     return this.http.put(this.sourceUrl + '/bucketlist/' + todo.id, todo);
   }
@@ -32,4 +32,12 @@ export class TodosService {
   deleteTodo(id: string) {
     return this.http.delete(this.sourceUrl + '/bucketlist/' + id);
   }
+
+  // update todo
+  // updateSingleTodo(todo: Todo) {
+  //   return this.http.put(
+  //     this.sourceUrl + '/bucketlist/' + todo.id,
+  //     todo + '/update'
+  //   );
+  // }
 }

@@ -11,6 +11,7 @@ import { Todo } from 'src/app/todo';
 export class TodosComponent implements OnInit {
   title: string;
   text: string;
+  displayForm: boolean = false;
 
   allTodos;
 
@@ -57,5 +58,17 @@ export class TodosComponent implements OnInit {
       console.log(data);
     });
   }
+
+  showOrHideForm() {
+    this.displayForm = !this.displayForm;
+  }
+
+  // updateTodo(todo) {
+  //   // update the todo in the service
+  //   this.todoService.updateSingleTodo(todo).subscribe((data) => {
+  //     this.getAllTodos();
+  //     console.log(data);
+  //   });
+  // }
 
 }
