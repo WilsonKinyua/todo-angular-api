@@ -12,7 +12,7 @@ export class RegisterComponent implements OnInit {
   new_user: any;
   name: string;
   email: string;
-  passowrd: string;
+  password: string;
   @ViewChild('f') searchForm: NgForm;
 
   constructor(private userService: UserService) {}
@@ -22,10 +22,13 @@ export class RegisterComponent implements OnInit {
   addNewUser() {
     this.name = this.searchForm.value.name;
     this.email = this.searchForm.value.email;
-    this.passowrd = this.searchForm.value.password;
+    this.password = this.searchForm.value.password;
+    // console.log(this.name);
+    // console.log(this.email);
+    // console.log(this.password);
 
     this.new_user = this.userService
-      .createUser(new User(this.name, this.email, this.passowrd))
+      .createUser(new User(this.name, this.email, this.password))
       .subscribe((data) => {
         console.log(data);
       });
