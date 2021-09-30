@@ -1,6 +1,7 @@
 import { UserService } from 'src/app/services/user.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,10 +13,11 @@ export class LoginComponent implements OnInit {
   password: string;
   token;
   displayAlert = false;
+  // router: Router;
 
   @ViewChild('f') loginForm: NgForm;
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService,private router:Router) {}
 
   ngOnInit(): void {}
 
@@ -33,6 +35,8 @@ export class LoginComponent implements OnInit {
           } else {
             localStorage.setItem('token', this.token.token);
             this.displayAlert = false;
+            // redirect to todos page
+            this.router.navigateByUrl('/todos');
           }
         },
         (error) => {
