@@ -28,7 +28,7 @@ export class RegisterComponent implements OnInit {
     // console.log(this.password);
 
     this.new_user = this.userService
-      .createUser(new User(this.name, this.email, this.password))
+      .createUser(new User(this.email,this.password,this.name))
       .subscribe((data) => {
         console.log(data);
       });

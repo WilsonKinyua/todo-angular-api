@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { TodosComponent } from './components/todos/todos.component';
+import { EnsureAuthenticatedService } from './services/ensure-authenticated.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,9 @@ import { TodosComponent } from './components/todos/todos.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    EnsureAuthenticatedService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
