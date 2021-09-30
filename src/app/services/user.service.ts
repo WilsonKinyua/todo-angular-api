@@ -22,4 +22,9 @@ export class UserService {
       password,
     });
   }
+
+  // get current user
+  getCurrentUser(public_id) {
+    return this.http.get(this.sourceUrl + '/user/' + public_id);
+  }
 }

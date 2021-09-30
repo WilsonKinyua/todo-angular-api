@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { TodosService } from 'src/app/services/todos.service';
+import { UserService } from 'src/app/services/user.service';
 import { Todo } from 'src/app/todo';
 
 @Component({
@@ -12,13 +13,18 @@ export class TodosComponent implements OnInit {
   title: string;
   text: string;
   displayForm: boolean = false;
+  public_id;
+  user_id;
 
   allTodos;
 
   // accessing the form inputs
   @ViewChild('f') searchForm: NgForm;
 
-  constructor(private todoService: TodosService) {}
+  constructor(
+    private todoService: TodosService,
+    private userService: UserService
+  ) {}
 
   ngOnInit(): void {
     this.getAllTodos();
@@ -30,16 +36,24 @@ export class TodosComponent implements OnInit {
 
     // add new todo to the service
     this.todoService
-      .addTodo(new Todo(1, this.title, this.text))
+      .addTodo(new Todo(this.user_id, this.title, this.text))
       .subscribe((data) => {
+        console.log(data);
         this.getAllTodos();
       });
   }
 
   getAllTodos() {
-    // get all todos from the service
-    this.todoService.getTodos().subscribe((data) => {
-      this.allTodos = data;
+    this.public_id = localStorage.getItem('token'); // get the token from local storage
+    // get the user_id
+    this.userService.getCurrentUser(this.public_id).subscribe((data) => {
+      this.user_id = data;
+      this.user_id = this.user_id.id;
+      // get all todos from the service
+      console.log(this.user_id);
+      this.todoService.getTodos(this.user_id).subscribe((data) => {
+        this.allTodos = data;
+      });
     });
   }
 
@@ -70,5 +84,4 @@ export class TodosComponent implements OnInit {
   //     console.log(data);
   //   });
   // }
-
 }

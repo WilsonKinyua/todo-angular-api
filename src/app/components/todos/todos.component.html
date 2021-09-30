@@ -21,25 +21,6 @@
             </div>
             <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Add Todo</button>
           </form>
-
-          <!-- update todolist -->
-          <!-- <form (ngSubmit)="updateTodo()" id="add-todo" #f="ngForm" *ngIf="displayForm">
-            <div class="form-group mb-2">
-              <label for="todo">Title</label>
-              <input type="text" class="form-control" id="todo" ngModel name="title" placeholder="" required
-                #title="ngModel">
-              <p class="text-danger error-block" *ngIf="!title.valid && title.touched"><small>Fill in the title!</small>
-              </p>
-            </div>
-            <div class="mb-2">
-              <label for="description">Description</label>
-              <textarea name="text" id="text" cols="30" rows="5" class="form-control" ngModel required
-                #text="ngModel"></textarea>
-              <p class="text-danger error-block" *ngIf="!text.valid && text.touched"><small>Fill in
-                  field!</small></p>
-            </div>
-            <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Add Todo</button>
-          </form> -->
         </div>
       </div>
     </div>

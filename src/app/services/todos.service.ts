@@ -12,9 +12,9 @@ export class TodosService {
     // this.todoGottenDetails = new Todo('', '');
   }
 
-  getTodos() {
+  getTodos(user_id) {
     // return this.http.get(this.sourceUrl+'/bucketlist')
-    return this.http.get(this.sourceUrl + '/bucketlist');
+    return this.http.get(this.sourceUrl + '/bucketlist/' + user_id + '/user');
   }
 
   // add a new todo
